@@ -4,23 +4,23 @@ This repository contains an FPGA-oriented 4-bit educational nanoprocessor implem
 
 ## Repository Layout
 
-- `/home/runner/work/nano_advance_7.30/nano_advance_7.30/Nanoprocessor-Extended/Source Files`  
+- `Nanoprocessor-Extended/Source Files`  
   Top-level processor and major functional blocks (ALU, ROM, decoder, register bank, etc.)
-- `/home/runner/work/nano_advance_7.30/nano_advance_7.30/Nanoprocessor-Extended/Building Blocks`  
+- `Nanoprocessor-Extended/Building Blocks`  
   Reusable low-level components (registers, adders, muxes, decoders)
-- `/home/runner/work/nano_advance_7.30/nano_advance_7.30/Nanoprocessor-Extended/Package Files`  
+- `Nanoprocessor-Extended/Package Files`  
   Shared type and constant definitions (`BusDefinitions.vhd`, `constants.vhd`)
-- `/home/runner/work/nano_advance_7.30/nano_advance_7.30/Nanoprocessor-Extended/Testbench Files`  
+- `Nanoprocessor-Extended/Testbench Files`  
   Testbenches for subsystem and top-level simulation
-- `/home/runner/work/nano_advance_7.30/nano_advance_7.30/Nanoprocessor-Extended/Constraint File/Nanoprocessor_Const.xdc`  
+- `Nanoprocessor-Extended/Constraint File/Nanoprocessor_Const.xdc`  
   Basys3 pin assignments
-- `/home/runner/work/nano_advance_7.30/nano_advance_7.30/Nanoprocessor-Extended/Bitstream`  
+- `Nanoprocessor-Extended/Bitstream`  
   Generated bitstream artifacts (if present)
 
 ## Top-Level Interface
 
 Defined in:
-`/home/runner/work/nano_advance_7.30/nano_advance_7.30/Nanoprocessor-Extended/Source Files/Top File/NanoProcessor.vhd`
+`Nanoprocessor-Extended/Source Files/Top File/NanoProcessor.vhd`
 
 ### Inputs
 - `Clock`
@@ -47,12 +47,12 @@ Defined in:
   - `JZR`
 
 Opcode and ALU constants are in:
-`/home/runner/work/nano_advance_7.30/nano_advance_7.30/Nanoprocessor-Extended/Package Files/constants.vhd`
+`Nanoprocessor-Extended/Package Files/constants.vhd`
 
 ## Current ROM Program
 
 Defined in:
-`/home/runner/work/nano_advance_7.30/nano_advance_7.30/Nanoprocessor-Extended/Source Files/Program ROM/Program_ROM.vhd`
+`Nanoprocessor-Extended/Source Files/Program ROM/Program_ROM.vhd`
 
 ```
 0: "101110000101"  -- MOVI R7,5
@@ -68,7 +68,7 @@ Defined in:
 ## Basys3 Hardware Mapping (Active Pins)
 
 From:
-`/home/runner/work/nano_advance_7.30/nano_advance_7.30/Nanoprocessor-Extended/Constraint File/Nanoprocessor_Const.xdc`
+`Nanoprocessor-Extended/Constraint File/Nanoprocessor_Const.xdc`
 
 - Clock: `W5`
 - Reset (BTNU): `U18`
@@ -89,13 +89,13 @@ From:
 - `Overflow` and `Zero` top-level outputs are gated by `Load_Select` and only actively reflect ALU-write cycles in `NanoProcessor.vhd`.
 - `Equal/LessThan/GreaterThan` are driven directly from ALU comparator outputs.
 - Comparator uses signed comparisons (`numeric_std.signed`) in:
-  `/home/runner/work/nano_advance_7.30/nano_advance_7.30/Nanoprocessor-Extended/Source Files/Comparator/Comparator_4_bit.vhd`
+  `Nanoprocessor-Extended/Source Files/Comparator/Comparator_4_bit.vhd`
 - 7-segment output is a hex LUT for the nibble value (0–F) of `R7`.
 
 ## Simulation
 
 Use the testbenches under:
-`/home/runner/work/nano_advance_7.30/nano_advance_7.30/Nanoprocessor-Extended/Testbench Files`
+`Nanoprocessor-Extended/Testbench Files`
 
 Examples include:
 - `NanoProcessor_TB.vhd`
@@ -115,13 +115,13 @@ Run them in Vivado Simulator (xsim) or your preferred VHDL simulator by compilin
    - `Source Files`
 3. Set top module to `NanoProcessor`.
 4. Add constraint file:
-   `/home/runner/work/nano_advance_7.30/nano_advance_7.30/Nanoprocessor-Extended/Constraint File/Nanoprocessor_Const.xdc`
+   `Nanoprocessor-Extended/Constraint File/Nanoprocessor_Const.xdc`
 5. Run synthesis, implementation, and bitstream generation.
 6. Program the FPGA and verify LEDs/7-segment behavior.
 
 ## Included Manual
 
 The original text manual is at:
-`/home/runner/work/nano_advance_7.30/nano_advance_7.30/Nanoprocessor-Extended/Extended_NanoProcessor_Manual.txt`
+`Nanoprocessor-Extended/Extended_NanoProcessor_Manual.txt`
 
 This README is intended to be the implementation-accurate quick reference for contributors.
